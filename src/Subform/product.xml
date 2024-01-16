@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldprefix="Joomla\Component\Modules\Administrator\Field">
+	<field type="list" name="product_tmp_var"
+		   label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_PRODUCT_TMP_VAR_LABEL"
+		   description="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_PRODUCT_TMP_VAR_DESC"
+		   default="_tmp_var_buttons">
+		<option value="_tmp_product_html_start">_tmp_product_html_start</option>
+		<option value="_tmp_product_html_before_image">_tmp_product_html_before_image</option>
+		<option value="_tmp_product_html_body_image">_tmp_product_html_body_image</option>
+		<option value="_tmp_product_html_after_image">_tmp_product_html_after_image</option>
+		<option value="_tmp_product_html_before_image_thumb">_tmp_product_html_before_image_thumb</option>
+		<option value="_tmp_product_html_after_image_thumb">_tmp_product_html_after_image_thumb</option>
+		<option value="_tmp_product_html_after_video">_tmp_product_html_after_video</option>
+		<option value="_tmp_product_html_before_atributes">_tmp_product_html_before_atributes</option>
+		<option value="_tmp_product_html_after_atributes">_tmp_product_html_after_atributes</option>
+		<option value="_tmp_product_html_after_freeatributes">_tmp_product_html_after_freeatributes</option>
+		<option value="_tmp_product_html_before_price">_tmp_product_html_before_price</option>
+		<option value="_tmp_product_html_after_ef">_tmp_product_html_after_ef</option>
+		<option value="_tmp_product_html_before_buttons">_tmp_product_html_before_buttons</option>
+		<option value="_tmp_product_html_buttons">_tmp_product_html_buttons</option>
+		<option value="_tmp_product_html_after_buttons">_tmp_product_html_after_buttons</option>
+		<option value="_tmp_product_html_before_demofiles">_tmp_product_html_before_demofiles</option>
+		<option value="_tmp_product_html_before_review">_tmp_product_html_before_review</option>
+		<option value="_tmp_product_html_before_related">_tmp_product_html_before_related</option>
+		<option value="_tmp_product_html_end">_tmp_product_html_end</option>
+		<option value="custom_position">custom position</option>
+	</field>
+	<field type="text" name="custom_position" label="Custom position"
+		   showon="product_tmp_var:custom_position"/>
+	<field
+			name="position"
+			type="ModulesPosition"
+			label="COM_MODULES_FIELD_POSITION_LABEL"
+			default=""
+			maxlength="50"
+			client="site"
+	/>
+	<field type="modulesinpositionsinfo" label="PLG_WT_MODULES_IN_JSHOPPING_MODULESINPOSITIONSINFO_LABEL" class="span12 w-100" name="modulesinpositionsinfo"/>
+
+
+</form>

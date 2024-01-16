@@ -1,45 +1,41 @@
 <?xml version="1.0"?>
-<extension type="plugin" version="4.0" method="upgrade" group="system">
-	<name>System - WT Modules in JShopping positions</name>
+<extension type="plugin" method="upgrade" group="system">
+	<name>PLG_WT_MODULES_IN_JSHOPPING_POSITIONS</name>
 	<author>Sergey Tolkachyov</author>
 	<authorEmail>info@web-tolk.ru</authorEmail>
 	<authorUrl>https://web-tolk.ru/</authorUrl>
-	<creationDate>31/05/2022</creationDate>
+	<creationDate>January 2024</creationDate>
 	<copyright>Sergey Tolkachyov</copyright>
-	<license>GNU GPL 3.0</license>
-	<version>1.0.0</version>
+	<license>GNU General Public License version 3 or later</license>
+	<version>2.0</version>
 	<description>PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_DESC</description>
 	<scriptfile>script.php</scriptfile>
+	<namespace path="src">Joomla\Plugin\System\Wt_modules_in_jshopping_positions</namespace>
 	<files>
-		<filename plugin="wt_modules_in_jshopping_positions">wt_modules_in_jshopping_positions.php</filename>
+		<folder plugin="wt_modules_in_jshopping_positions">src</folder>
 		<folder>language</folder>
-		<folder>fields</folder>
-		<folder>subform</folder>
+		<folder>services</folder>
 	</files>
-	<languages>
-		<language tag="en-GB">language/en-GB/en-GB.plg_system_wt_modules_in_jshopping_positions.ini
-		</language>
-		<language tag="en-GB">language/en-GB/en-GB.plg_system_wt_modules_in_jshopping_positions.sys.ini
-		</language>
-		<language tag="ru-RU">language/ru-RU/ru-RU.plg_system_wt_modules_in_jshopping_positions.ini
-		</language>
-		<language tag="ru-RU">language/ru-RU/ru-RU.plg_system_wt_modules_in_jshopping_positions.sys.ini
-		</language>
+	<languages folder="language" client="administrator">
+		<language tag="en-GB">en-GB/plg_system_wt_modules_in_jshopping_positions.ini</language>
+		<language tag="en-GB">en-GB/plg_system_wt_modules_in_jshopping_positions.sys.ini</language>
+		<language tag="ru-RU">ru-RU/plg_system_wt_modules_in_jshopping_positions.ini</language>
+		<language tag="ru-RU">ru-RU/plg_system_wt_modules_in_jshopping_positions.sys.ini</language>
 	</languages>
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
-				<field addfieldpath="plugins/system/wt_modules_in_jshopping_positions/fields" type="plugininfo"
-					   name="plugininfo"/>
+				<field addfieldprefix="Joomla\Plugin\System\Wt_modules_in_jshopping_positions\Fields"
+                       type="plugininfo" name="plugininfo"/>
 			</fieldset>
 			<fieldset name="wt_modules_in_jshopping_positions_category">
 				<field type="spacer" label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_PRODUCT_LIST_VIEW"/>
 
 				<field name="category_modules"
-					   label="Категория"
+					   label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_CATEGORY"
 					   type="subform"
 					   layout="joomla.form.field.subform.repeatable"
-					   formsource="plugins/system/wt_modules_in_jshopping_positions/subform/category.xml"
+					   formsource="plugins/system/wt_modules_in_jshopping_positions/src/Subform/category.xml"
 					   multiple="true"
 				/>
 
@@ -47,18 +43,31 @@
 			<fieldset name="wt_modules_in_jshopping_positions_product">
 				<field type="spacer" label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_PRODUCT_VIEW"/>
 				<field name="product_modules"
-					   label="Товар"
+					   label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_PRODUCT"
 					   type="subform"
 					   layout="joomla.form.field.subform.repeatable"
-					   formsource="plugins/system/wt_modules_in_jshopping_positions/subform/product.xml"
+					   formsource="plugins/system/wt_modules_in_jshopping_positions/src/Subform/product.xml"
+					   multiple="true"
+				/>
+
+			</fieldset>
+			<fieldset name="wt_modules_in_jshopping_positions_checkout" label="PLG_WT_MODULES_IN_JSHOPPING_CHECKOUT">
+				<field name="checkout_modules"
+					   label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_CHECKOUT"
+					   type="subform"
+					   layout="joomla.form.field.subform.repeatable"
+					   formsource="plugins/system/wt_modules_in_jshopping_positions/src/Subform/checkout.xml"
 					   multiple="true"
 				/>
 
 			</fieldset>
 		</fields>
 	</config>
-
+	
 	<updateservers>
-		<server type="extension" name="WebTolk - WT Modules in JShopping positions">https://web-tolk.ru/component/swjprojects/jupdate.html?element=wt_modules_in_jshopping_positions</server>
-	</updateservers>
+        <server type="extension" priority="1" name="WT Modules in JShopping positions">
+            https://web-tolk.ru/component/swjprojects/jupdate?element=wt_modules_in_jshopping_positions
+        </server>
+    </updateservers>
+    <changelogurl>https://web-tolk.ru/jchangelog?element=wt_modules_in_jshopping_positions</changelogurl>
 </extension>
