@@ -53,11 +53,9 @@ class ModulesinpositionsinfoField extends NoteField
 
         if (empty($module_position) || $module_position == 'none')
         {
-            $html= 'Не выбрана модульная позиция';
+            $html= Text::_('PLG_WT_MODULES_IN_JSHOPPING_MODULESINPOSITIONSINFO_NOT_SELECTED');
             return '</div><div '.$class.'>' . $html;
         }
-
-
 
         $db    = Factory::getDbo();
         $query = $db->getQuery(true);
@@ -67,7 +65,6 @@ class ModulesinpositionsinfoField extends NoteField
 
         $db->setQuery($query);
         $modules = $db->loadAssocList();
-
 
         $title       = $this->element['label'] ? (string) $this->element['label'] : ($this->element['title'] ? (string) $this->element['title'] : '');
         $description = (string) $this->element['description'];
@@ -88,8 +85,6 @@ class ModulesinpositionsinfoField extends NoteField
         $html   = implode('', $html);
 
         return '</div><div '.$class.'>' . $html;
-
-
     }
 
     /**
