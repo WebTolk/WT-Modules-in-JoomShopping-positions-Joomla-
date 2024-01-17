@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldprefix="Joomla\Component\Modules\Administrator\Field">
+		<field type="radio" name="category_or_product" label="PLG_WT_MODULES_IN_JSHOPPING_CATEGORY_CATEGORY_OR_PRODUCT" class="btn-group btn-group-yesno" default="product">
+			<option value="product">PLG_WT_MODULES_IN_JSHOPPING_CATEGORY_CATEGORY_OR_PRODUCT_PRODUCT</option>
+			<option value="category">PLG_WT_MODULES_IN_JSHOPPING_CATEGORY_CATEGORY_OR_PRODUCT_CATEGORY</option>
+		</field>
+		<field type="list" name="product_list_tmp_var_product"
+			   label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_PRODUCT_LIST_TMP_VAR_LABEL"
+			   description="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_PRODUCT_LIST_TMP_VAR_DESC"
+			   default="_tmp_var_buttons"
+			   showon="category_or_product:product">
+			<option value="_tmp_var_start">_tmp_var_start</option>
+			<option value="_tmp_var_image_block">_tmp_var_image_block</option>
+			<option value="_tmp_var_bottom_foto">_tmp_var_bottom_foto</option>
+			<option value="_tmp_var_old_price_ext">_tmp_var_old_price_ext</option>
+			<option value="_tmp_var_bottom_old_price">_tmp_var_bottom_old_price</option>
+			<option value="_tmp_var_price_ext">_tmp_var_price_ext</option>
+			<option value="_tmp_var_bottom_price">_tmp_var_bottom_price</option>
+			<option value="_tmp_var_top_buttons">_tmp_var_top_buttons</option>
+			<option value="_tmp_var_buttons">_tmp_var_buttons</option>
+			<option value="_tmp_var_bottom_buttons">_tmp_var_bottom_buttons</option>
+			<option value="_tmp_var_end">_tmp_var_end</option>
+			<option value="custom_position">custom position</option>
+		</field>
+		<field type="list" name="product_list_tmp_var_category"
+			   label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_PRODUCT_LIST_TMP_VAR_LABEL"
+			   description="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_PRODUCT_LIST_TMP_VAR_DESC"
+			   default="_tmp_list_products_html_start"
+			   showon="category_or_product:category">
+			<option value="_tmp_list_products_html_start">_tmp_list_products_html_start</option>
+			<option value="_tmp_list_products_html_end">_tmp_list_products_html_end</option>
+			<option value="_tmp_category_html_start">_tmp_category_html_start</option>
+			<option value="_tmp_category_html_before_products">_tmp_category_html_before_products</option>
+			<option value="_tmp_category_html_end">_tmp_category_html_end</option>
+			<option value="_tmp_maincategory_html_start">_tmp_maincategory_html_start</option>
+			<option value="_tmp_maincategory_html_end">_tmp_maincategory_html_end</option>
+			<option value="custom_position">custom position</option>
+		</field>
+		<field type="text" name="custom_position_category" label="PLG_WT_MODULES_IN_JSHOPPING_CATEGORY_CUSTOM_POSITION_CATEGORY"
+			   showon="product_list_tmp_var_category:custom_position[AND]category_or_product:category"/>
+		<field type="text" name="custom_position_product" label="PLG_WT_MODULES_IN_JSHOPPING_CATEGORY_CUSTOM_POSITION_PRODUCT"
+			   showon="product_list_tmp_var_product:custom_position[AND]category_or_product:product"/>
+		<field
+				name="position"
+				type="ModulesPosition"
+				label="COM_MODULES_FIELD_POSITION_LABEL"
+				default=""
+				maxlength="50"
+				client="site"
+		/>
+		<field type="modulesinpositionsinfo" label="PLG_WT_MODULES_IN_JSHOPPING_MODULESINPOSITIONSINFO_LABEL" class="span12 w-100" name="modulesinpositionsinfo"/>
+
+</form>

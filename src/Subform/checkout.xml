@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldprefix="Joomla\Component\Modules\Administrator\Field">
+		<field type="radio"
+			   name="checkout_section"
+			   label="PLG_WT_MODULES_IN_JSHOPPING_CHECKOUT_CHECKOUT_SECTION"
+			   class="btn-group btn-group-yesno"
+			   default="cart">
+			<option value="cart">PLG_WT_MODULES_IN_JSHOPPING_CHECKOUT_CHECKOUT_SECTION_CART</option>
+			<option value="address">PLG_WT_MODULES_IN_JSHOPPING_CHECKOUT_CHECKOUT_SECTION_ADDRESS</option>
+			<option value="shippings">PLG_WT_MODULES_IN_JSHOPPING_CHECKOUT_CHECKOUT_SECTION_SHIPPINGS</option>
+			<option value="payments">PLG_WT_MODULES_IN_JSHOPPING_CHECKOUT_CHECKOUT_SECTION_PAYMENTS</option>
+			<option value="previewfinish">PLG_WT_MODULES_IN_JSHOPPING_CHECKOUT_CHECKOUT_SECTION_PREVIEWFINISH</option>
+			<option value="finish">PLG_WT_MODULES_IN_JSHOPPING_CHECKOUT_CHECKOUT_SECTION_FINISH</option>
+		</field>
+		<field type="list" name="checkout_cart_tmp_var_list"
+			   label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_CART_TMP_VAR_LABEL"
+			   default="_tmp_ext_html_cart_start"
+			   showon="checkout_section:cart">
+			<option value="_tmp_ext_html_cart_start">_tmp_ext_html_cart_start</option>
+			<option value="_tmp_ext_subtotal">_tmp_ext_subtotal</option>
+			<option value="_tmp_html_after_subtotal">_tmp_html_after_subtotal</option>
+			<option value="_tmp_ext_discount_text">_tmp_ext_discount_text</option>
+			<option value="_tmp_ext_discount">_tmp_ext_discount</option>
+			<option value="_tmp_ext_total">_tmp_ext_total</option>
+			<option value="_tmp_html_after_total">_tmp_html_after_total</option>
+			<option value="_tmp_html_before_buttons">_tmp_html_before_buttons</option>
+			<option value="_tmp_html_after_buttons">_tmp_html_after_buttons</option>
+			<option value="_tmp_ext_html_before_discount">_tmp_ext_html_before_discount</option>
+			<option value="custom_position">custom position</option>
+		</field>
+		<field type="list" name="checkout_address_tmp_var_list"
+			   label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_CHECKOUT_ADDRESS_TMP_VAR_LABEL"
+			   description="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_CHECKOUT_ADDRESS_TMP_VAR_DESC"
+			   default="_tmp_ext_html_address_start"
+			   showon="checkout_section:address">
+			<option value="_tmp_ext_html_address_start">_tmp_ext_html_address_start</option>
+			<option value="_tmpl_address_html_2">_tmpl_address_html_2</option>
+			<option value="_tmpl_address_html_3">_tmpl_address_html_3</option>
+			<option value="_tmpl_address_html_4">_tmpl_address_html_4</option>
+			<option value="_tmpl_address_html_5">_tmpl_address_html_5</option>
+			<option value="_tmpl_address_html_6">_tmpl_address_html_6</option>
+			<option value="_tmpl_address_html_7">_tmpl_address_html_7</option>
+			<option value="_tmp_ext_html_address_end">_tmp_ext_html_address_end</option>
+			<option value="_tmpl_address_html_8">_tmpl_address_html_8</option>
+			<option value="_tmpl_address_html_9">_tmpl_address_html_9</option>
+			<option value="custom_position">custom position</option>
+		</field>
+		<field type="list" name="checkout_shippings_tmp_var_list"
+			   label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_CHECKOUT_SHIPPINGS_TMP_VAR_LABEL"
+			   default="_tmp_ext_html_shipping_start"
+			   showon="checkout_section:shippings">
+			<option value="_tmp_ext_html_shipping_start">_tmp_ext_html_shipping_start</option>
+			<option value="_tmp_ext_html_shipping_end">_tmp_ext_html_shipping_end</option>
+			<option value="custom_position">custom position</option>
+		</field>
+		<field type="list" name="checkout_payments_tmp_var_list"
+			   label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_CHECKOUT_PAYMENTS_TMP_VAR_LABEL"
+			   default="_tmp_ext_html_shipping_start"
+			   showon="checkout_section:payments">
+			<option value="_tmp_ext_html_payment_start">_tmp_ext_html_payment_start</option>
+			<option value="_tmp_ext_html_payment_end">_tmp_ext_html_payment_end</option>
+			<option value="custom_position">custom position</option>
+		</field>
+		<field type="list" name="checkout_previewfinish_tmp_var_list"
+			   label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_CHECKOUT_PREVIEWFINISH_TMP_VAR_LABEL"
+			   description="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_CHECKOUT_PREVIEWFINISH_TMP_VAR_DESC"
+			   default="_tmp_ext_html_previewfinish_start"
+			   showon="checkout_section:previewfinish">
+			<option value="_tmp_ext_html_previewfinish_start">_tmp_ext_html_previewfinish_start</option>
+			<option value="_tmp_ext_html_previewfinish_agb">_tmp_ext_html_previewfinish_agb</option>
+			<option value="_tmp_ext_html_previewfinish_before_button">_tmp_ext_html_previewfinish_before_button</option>
+			<option value="_tmp_ext_html_previewfinish_end">_tmp_ext_html_previewfinish_end</option>
+			<option value="custom_position">custom position</option>
+		</field>
+		<field type="list" name="checkout_finish_tmp_var_list"
+			   label="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_CHECKOUT_FINISH_TMP_VAR_LABEL"
+			   description="PLG_WT_MODULES_IN_JSHOPPING_POSITIONS_CHECKOUT_FINISH_TMP_VAR_DESC"
+			   default="_tmp_ext_html_previewfinish_start"
+			   showon="checkout_section:finish">
+			<option value="text">text</option>
+		</field>
+
+		<field type="text" name="custom_position_checkout_cart" label="PLG_WT_MODULES_IN_JSHOPPING_CATEGORY_CUSTOM_POSITION_CHECKOUT_CART"
+			   showon="checkout_cart_tmp_var_list:custom_position[AND]checkout_section:cart"/>
+		<field type="text" name="custom_position_checkout_address" label="PLG_WT_MODULES_IN_JSHOPPING_CATEGORY_CUSTOM_POSITION_CHECKOUT_ADDRESS"
+			   showon="checkout_address_tmp_var_list:custom_position[AND]checkout_section:address"/>
+		<field type="text" name="custom_position_checkout_shippings" label="PLG_WT_MODULES_IN_JSHOPPING_CATEGORY_CUSTOM_POSITION_CHECKOUT_SHIPPINGS"
+			   showon="checkout_shippings_tmp_var_list:custom_position[AND]checkout_section:shippings"/>
+		<field type="text" name="custom_position_checkout_payments" label="PLG_WT_MODULES_IN_JSHOPPING_CATEGORY_CUSTOM_POSITION_CHECKOUT_PAYMENTS"
+			   showon="checkout_payments_tmp_var_list:custom_position[AND]checkout_section:payments"/>
+		<field type="text" name="custom_position_checkout_previewfinish" label="PLG_WT_MODULES_IN_JSHOPPING_CATEGORY_CUSTOM_POSITION_CHECKOUT_PREVIEWFINISH"
+			   showon="checkout_previewfinish_tmp_var_list:custom_position[AND]checkout_section:previewfinish"/>
+		<field
+				name="position"
+				type="ModulesPosition"
+				label="COM_MODULES_FIELD_POSITION_LABEL"
+				default=""
+				maxlength="50"
+				client="site"
+		/>
+		<field type="modulesinpositionsinfo" label="PLG_WT_MODULES_IN_JSHOPPING_MODULESINPOSITIONSINFO_LABEL" class="span12 w-100" name="modulesinpositionsinfo"/>
+
+</form>
