@@ -50,13 +50,13 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
      *
      * @param $obj object Объект класса
      * @param $property string свойство
-     * @param $value object значение
+     * @param $value string значение
      *
-     * @return void
+     * @return object Объект класса с измененным свойством
      *
      * @since 2.0
      */
-    private static function CreateOrAddToProperty($obj, $property, $value): void
+    private static function CreateOrAddToProperty($obj, $property, $value): object
     {
         if (property_exists($obj, $property))
         {
@@ -66,6 +66,8 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
         {
             $obj->$property = $value;
         }
+
+        return $obj;
     }
 
     /**
@@ -93,7 +95,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
             $modules = ModuleHelper::getModules($product_module->position);
             foreach ($modules as $module)
             {
-                self::CreateOrAddToProperty($view, $product_tmp_var, ModuleHelper::renderModule($module));
+                $view = self::CreateOrAddToProperty($view, $product_tmp_var, ModuleHelper::renderModule($module));
             }
         }
     }
@@ -145,7 +147,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
                 $modules = ModuleHelper::getModules($category_module->position);
                 foreach ($modules as $module)
                 {
-                    self::CreateOrAddToProperty($view, $product_list_tmp_var_category, ModuleHelper::renderModule($module));
+                    $view = self::CreateOrAddToProperty($view, $product_list_tmp_var_category, ModuleHelper::renderModule($module));
                 }
             }
             elseif ($category_module->category_or_product == 'product')
@@ -163,7 +165,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
                         $modules = ModuleHelper::getModules($category_module->position);
                         foreach ($modules as $module)
                         {
-                            self::CreateOrAddToProperty($product, $product_list_tmp_var_product, ModuleHelper::renderModule($module));
+                            $product = self::CreateOrAddToProperty($product, $product_list_tmp_var_product, ModuleHelper::renderModule($module));
                         }
                     }
                 }
@@ -200,7 +202,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
                 $modules = ModuleHelper::getModules($category_module->position);
                 foreach ($modules as $module)
                 {
-                    self::CreateOrAddToProperty($view, $product_list_tmp_var_category, ModuleHelper::renderModule($module));
+                    $view = self::CreateOrAddToProperty($view, $product_list_tmp_var_category, ModuleHelper::renderModule($module));
                 }
             }
             elseif ($category_module->category_or_product == 'product')
@@ -218,7 +220,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
                         $modules = ModuleHelper::getModules($category_module->position);
                         foreach ($modules as $module)
                         {
-                            self::CreateOrAddToProperty($product, $product_list_tmp_var_product, ModuleHelper::renderModule($module));
+                            $product = self::CreateOrAddToProperty($product, $product_list_tmp_var_product, ModuleHelper::renderModule($module));
                         }
                     }
                 }
@@ -254,7 +256,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
                 $modules = ModuleHelper::getModules($checkout_module->position);
                 foreach ($modules as $module)
                 {
-                    self::CreateOrAddToProperty($view, $checkout_cart_tmp_var, ModuleHelper::renderModule($module));
+                    $view = self::CreateOrAddToProperty($view, $checkout_cart_tmp_var, ModuleHelper::renderModule($module));
                 }
             }
         }
@@ -288,7 +290,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
                 $modules = ModuleHelper::getModules($checkout_module->position);
                 foreach ($modules as $module)
                 {
-                    self::CreateOrAddToProperty($view, $checkout_address_tmp_var, ModuleHelper::renderModule($module));
+                    $view = self::CreateOrAddToProperty($view, $checkout_address_tmp_var, ModuleHelper::renderModule($module));
                 }
             }
         }
@@ -323,7 +325,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
                 $modules = ModuleHelper::getModules($checkout_module->position);
                 foreach ($modules as $module)
                 {
-                    CreateOrAddToProperty($view, $checkout_payments_tmp_var, ModuleHelper::renderModule($module));
+                    $view = self::CreateOrAddToProperty($view, $checkout_payments_tmp_var, ModuleHelper::renderModule($module));
                 }
             }
         }
@@ -358,7 +360,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
                 $modules = ModuleHelper::getModules($checkout_module->position);
                 foreach ($modules as $module)
                 {
-                    self::CreateOrAddToProperty($view, $checkout_shippings_tmp_var, ModuleHelper::renderModule($module));
+                    $view = self::CreateOrAddToProperty($view, $checkout_shippings_tmp_var, ModuleHelper::renderModule($module));
                 }
             }
         }
@@ -393,7 +395,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
                 $modules = ModuleHelper::getModules($checkout_module->position);
                 foreach ($modules as $module)
                 {
-                    self::CreateOrAddToProperty($view, $checkout_previewfinish_tmp_var, ModuleHelper::renderModule($module));
+                    $view = self::CreateOrAddToProperty($view, $checkout_previewfinish_tmp_var, ModuleHelper::renderModule($module));
                 }
             }
         }
