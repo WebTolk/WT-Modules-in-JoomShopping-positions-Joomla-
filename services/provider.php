@@ -1,14 +1,14 @@
 <?php
 /**
- * @package       WT Modules in JoomShopping positions
- * @version       2.0.0
+ * @package    WT Modules in jshopping positions
+ * @version       2.0.1
  * @Author        Sergey Tolkachyov, https://web-tolk.ru
- * @copyright     Copyright (C) 2024 Sergey Tolkachyov
+ * @copyright  Copyright (c) 2022 - 2025 Sergey Tolkachyov, Sergey Sergevnin. All rights reserved.
  * @license       GNU/GPL http://www.gnu.org/licenses/gpl-3.0.html
  * @since         1.0.0
  */
 
-defined('_JEXEC') || die;
+\defined('_JEXEC') || die;
 
 use Joomla\CMS\Extension\PluginInterface;
 use Joomla\CMS\Factory;

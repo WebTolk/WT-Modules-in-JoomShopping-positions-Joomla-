@@ -1,20 +1,23 @@
 <?php
 /**
- * @package       WT Modules in jshopping positions
- * @version       2.0.0
+ * @package    WT Modules in jshopping positions
+ * @version       2.0.1
  * @Author        Sergey Tolkachyov, https://web-tolk.ru
- * @copyright     Copyright (C) 2024 Sergey Tolkachyov
+ * @copyright  Copyright (c) 2022 - 2025 Sergey Tolkachyov, Sergey Sergevnin. All rights reserved.
  * @license       GNU/GPL http://www.gnu.org/licenses/gpl-3.0.html
  * @since         1.0.0
  */
 
 namespace Joomla\Plugin\System\Wt_modules_in_jshopping_positions\Extension;
-// No direct access
-defined('_JEXEC') or die;
 
 use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\Event\Event;
 use Joomla\Event\SubscriberInterface;
+use function defined;
+
+// No direct access
+defined('_JEXEC') or die;
 
 class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberInterface
 {
@@ -46,6 +49,37 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
 	}
 
 	/**
+	 * Вызывается перед $view->display()
+	 *
+	 * @param $event Event before display product view
+	 *
+	 * @return void
+	 *
+	 * @since 1.0.0
+	 */
+	public function onBeforeDisplayProductView($event): void
+	{
+		/* @var $view object JoomShopping Product view */
+		$view            = $event->getArgument(0);
+		$product_modules = $this->params->get('product_modules');
+
+		foreach ($product_modules as $product_module)
+		{
+			$product_tmp_var = $product_module->product_tmp_var;
+			if ($product_tmp_var == 'custom_position')
+			{
+				$product_tmp_var = $product_module->custom_position;
+			}
+			$modules = ModuleHelper::getModules($product_module->position);
+			foreach ($modules as $module)
+			{
+				$view = self::CreateOrAddToProperty($view, $product_tmp_var, ModuleHelper::renderModule($module));
+			}
+		}
+		$event->setArgument(0, $view);
+	}
+
+	/**
 	 * Динамически создает свойство в объекте или добавляет к нему значение
 	 *
 	 * @param $obj      object Объект класса
@@ -71,37 +105,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
 	}
 
 	/**
-	 * Вызывается перед $view->display()
-	 *
-	 * @param $event \Joomla\Event\Event before display product view
-	 *
-	 * @return void
-	 *
-	 * @since 1.0.0
-	 */
-	public function onBeforeDisplayProductView($event): void
-	{
-		/* @var $view object JoomShopping Product view */
-		$view            = $event->getArgument(0);
-		$product_modules = $this->params->get('product_modules');
-
-		foreach ($product_modules as $product_module)
-		{
-			$product_tmp_var = $product_module->product_tmp_var;
-			if ($product_tmp_var == 'custom_position')
-			{
-				$product_tmp_var = $product_module->custom_position;
-			}
-			$modules = ModuleHelper::getModules($product_module->position);
-			foreach ($modules as $module)
-			{
-				$view = self::CreateOrAddToProperty($view, $product_tmp_var, ModuleHelper::renderModule($module));
-			}
-		}
-	}
-
-	/**
-	 * @param $event \Joomla\Event\Event before display WT jshopping favorites view
+	 * @param $event Event before display WT jshopping favorites view
 	 *
 	 * @return void
 	 *
@@ -171,6 +175,8 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
 				}
 			}
 		}
+
+		$event->setArgument(0, $view);
 	}
 
 	/**
@@ -226,6 +232,8 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
 				}
 			}
 		}
+
+		$event->setArgument(0, $view);
 	}
 
 	/**
@@ -260,6 +268,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
 				}
 			}
 		}
+		$event->setArgument(0, $view);
 	}
 
 	/**
@@ -294,6 +303,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
 				}
 			}
 		}
+		$event->setArgument(0, $view);
 	}
 
 	/**
@@ -329,6 +339,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
 				}
 			}
 		}
+		$event->setArgument(0, $view);
 	}
 
 	/**
@@ -364,6 +375,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
 				}
 			}
 		}
+		$event->setArgument(0, $view);
 	}
 
 	/**
@@ -399,6 +411,7 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
 				}
 			}
 		}
+		$event->setArgument(0, $view);
 	}
 
 	/**
@@ -413,23 +426,35 @@ class Wt_modules_in_jshopping_positions extends CMSPlugin implements SubscriberI
 	 */
 	public function onBeforeDisplayCheckoutFinish($event): void
 	{
-		/* @var $text object */
+		/* @var $text string */
 		$text = $event->getArgument(0);
-		/* @var $order_id object */
+		/* @var $order_id int */
 		$order_id = $event->getArgument(1);
+		$text_end = $event->getArgument(2);
 
 		$checkout_modules = $this->params->get('checkout_modules');
 
 		foreach ($checkout_modules as $checkout_module)
 		{
-			if ($checkout_module->checkout_section == 'finish')
+			$checkout_finish_tmp_var = $checkout_module->checkout_finish_tmp_var_list;
+			$modules        = ModuleHelper::getModules($checkout_module->position);
+			$modules_string = '';
+			foreach ($modules as $module)
 			{
-				$modules = ModuleHelper::getModules($checkout_module->position);
-				foreach ($modules as $module)
-				{
-					$text .= ModuleHelper::renderModule($module);
-				}
+				$modules_string .= ModuleHelper::renderModule($module);
+			}
+
+			if ($checkout_finish_tmp_var == 'text')
+			{
+				$text .= $modules_string;
+			}
+			elseif ($checkout_finish_tmp_var == 'text_end')
+			{
+				$text_end .= $modules_string;
 			}
 		}
+
+		$event->setArgument(0, $text);
+		$event->setArgument(2, $text_end);
 	}
 }

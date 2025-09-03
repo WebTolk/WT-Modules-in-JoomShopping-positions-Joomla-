@@ -78,6 +78,7 @@
 			   default="_tmp_ext_html_previewfinish_start"
 			   showon="checkout_section:finish">
 			<option value="text">text</option>
+			<option value="text_end">text_end</option>
 		</field>
 
 		<field type="text" name="custom_position_checkout_cart" label="PLG_WT_MODULES_IN_JSHOPPING_CATEGORY_CUSTOM_POSITION_CHECKOUT_CART"
